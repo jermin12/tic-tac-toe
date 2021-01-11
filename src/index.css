@@ -1,19 +1,72 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+
+body
+{
+  margin:0;
+
+
+
+background-color:black;
+background-image:
+radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px),
+radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 30px),
+radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 40px),
+radial-gradient(rgba(255,255,255,.4), rgba(255,255,255,.1) 2px, transparent 30px);
+background-size: 550px 550px, 350px 350px, 250px 250px, 150px 150px;
+background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;
+
+
+   width:"100vw";
+   height:"100vw";
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+
+
+
+.wrap
+{
+ display: block;
+ width:100%;
+  height: 100%;
+  position: "absolute";
+  top: "50%";
+  left: "50%";
+
+ transform:"translate(-50%,-50%)";
+  
 }
 
-.board-row:after {
-  clear: both;
-  content: "";
-  display: table;
+.con
+{
+  display: flex;
+flex-wrap: wrap;
+justify-content: space-between;
+margin: 2% auto;
+  width: 35%;
+height: 20%;
+
+
+
+
+
 }
+.status
+{  
+font-family: "Times New Roman", Times, serif;
+  font-size: 2em;
+  color:white;
+
+}
+
+.b1
+{font-family: "Times New Roman", Times, serif;
+  background-color: #233;
+  color: white;
+  width:100px;
+  height:35px;
+  border-radius:25px;
+  font-size: 1em;
+  letter-spacing: 1px;
+
+
+}
+

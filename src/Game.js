@@ -1,22 +1,41 @@
 import React , {Component} from 'react';
 import Square from './Square';
 import 'tachyons';
+import './index.css';
+import './Font.ttf';
+import tttlogo from './tictactoe.jpg';
+import {Box} from '@material-ui/core';
+
+
+
 
 class Game extends Component 
 {
+
  constructor (props)
 	 {
 	 	super(props);
-	 	this.state = {
+	 	 this.initialState = {
 	 		squares:Array(9).fill(null),
 	 		turnX:true,
 	 		
 	 	};
+     this.state = this.initialState;
+
+
 	 }
+
+  onResetClick(e) {
+        e.preventDefault();
+        this.setState(this.initialState);
+    }
+
 
 click(i) 
  { 
-    const squares=this.state.squares.slice();
+  
+  const squares=this.state.squares.slice();
+
 
   if (this.calculatewinner(squares)||squares[i])
   { return; }
@@ -25,10 +44,13 @@ click(i)
   this.setState({squares:squares,
     turnX:!this.state.turnX,
   });
+
+
   }
 
 createbutton(i) 
 {
+
   return <Square letter={this.state.squares[i]} onclick={()=>this.click(i)} />
 }  
 
@@ -64,24 +86,33 @@ calculatewinner(squares)
 
  render()
 {
+ 
+ 
+   
+
 
   let status;
   const winner = this.calculatewinner(this.state.squares);
   
     if (winner) {
-      status = 'Winner:' + winner;
-    } 
+      status = 'WINNER :  ' + winner;
+        } 
     else 
     {
-      status = 'Next player:' + (this.state.turnX ? 'X' : 'O');
+      status = 'NEXT PLAYER:   ' + (this.state.turnX ? 'X' : 'O');
     }
   
 	
     return(
+		 
+	 <Box className="wrap">
 
-    <div className="ma4">
-    <div>{status}</div>
-    <div className="flex flexwrap  justify-center">
+     <img alt="tictactoe" src={tttlogo} style={{display:"block",float:"both",
+  margin:"4% auto",
+  width:400,height:100,
+borderRadius:"25px",
+boxShadow:"10px 10px 5px grey"}}></img>
+     <div className="flex flexwrap  justify-center">
      {this.createbutton(1)}
      {this.createbutton(2)}
      {this.createbutton(3)}
@@ -98,15 +129,18 @@ calculatewinner(squares)
     {this.createbutton(8)}
     {this.createbutton(9)}
     </div>
- 
-      </div>
 
-         
-		 
-	
+<div className="con">
+<div className="status">{status}</div>
+
+ <button className="b1" type="button" onClick={this.onResetClick.bind(this)}>Reset</button>
+</div>
+  </Box>  
 		
+
 
 	);
 }
+
 }
 export default Game;
